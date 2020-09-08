@@ -1,0 +1,7 @@
+# DataSource Configspring:
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.231.138:3306/demo?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    password: root
+    username: root

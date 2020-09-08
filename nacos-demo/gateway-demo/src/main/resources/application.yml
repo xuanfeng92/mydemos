@@ -1,0 +1,31 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: gateway-api
+  cloud:
+    gateway:
+      routes:
+        - id: service-provider
+          # uri: http://127.0.0.1:8070
+          # 这里的服务名，对应着的是nacos上注册的服务名 比如service-provider 服务
+          # 以下的url配置属于负载均衡的配置 The LoadBalancerClient Filter
+          # 只要注册的服务名一样，同一个服务可以运行到不同的端口或者主机上，这样做到了负载均衡
+          uri: lb://service-provider
+          predicates:
+            - Path=/provider/**
+          filters:
+            - RewritePath=/provider(?<segment>/?.*), $\{segment}
+        - id: service-consumer
+          # uri: http://127.0.0.1:8080
+          # 这里的服务名，对应着的是nacos上注册的服务名 比如service-consumer 服务
+          # 以下的url配置属于负载均衡的配置 The LoadBalancerClient Filter
+          # 只要注册的服务名一样，同一个服务可以运行到不同的端口或者主机上，这样做到了负载均衡
+          uri: lb://service-consumer
+          predicates:
+            - Path=/consumer/**
+          filters:
+            - RewritePath=/consumer(?<segment>/?.*), $\{segment}
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="consumer-demo" />
+        <module name="elasticsearch-demo" />
+        <module name="gateway-demo" />
+        <module name="mybatisplus-demo" />
+        <module name="provider-demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="business-service" target="12" />
+      <module name="consumer-demo" target="1.8" />
+      <module name="elasticsearch-demo" target="1.8" />
+      <module name="gateway-demo" target="1.8" />
+      <module name="mybatisplus-demo" target="1.8" />
+      <module name="provider-demo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="consumer-demo" options="-parameters" />
+      <module name="elasticsearch-demo" options="-parameters" />
+      <module name="gateway-demo" options="-parameters" />
+      <module name="mybatisplus-demo" options="-parameters" />
+      <module name="provider-demo" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/consumer-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/elasticsearch-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-demo/src/main/resources/application.yml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/mybatisplus-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/provider-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/provider-demo/src/main/java/com/xiaohui/nacos/providerdemo/controller/HelloController.java" charset="UTF-8" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>
