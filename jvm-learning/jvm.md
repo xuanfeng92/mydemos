@@ -208,7 +208,7 @@
   >  >   >
   >  >   >比如一个32bit空间中： 25bit用于存储对象哈希码，4bit存储分代年龄，2bit存储锁标志，1bit固定为0，而在其它状态下对象的存储如下
   >  >   >
-  >  >   >![image-20201002160049481](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201002160049481.png)
+  >  >   >![image-20201002160049481]( jvm.assets%5Cimage-20201002160049481.png)
   >  >
   >  >2. 另一部分是**类型指针**，即对象指向它的类元数据的指针，虚拟机**通过这个指针来确定这个对象是哪个类的实例**。
   >  >
@@ -248,13 +248,13 @@ Java程序需要通过栈（这里应该指的是虚拟机栈）上的reference�
 
   > 描述： Java堆会划分出一块内存来作为句柄池，reference存储的就是对象的句柄地址，而**句柄中包含了对象实例数据与类型数据各自的具体地址信息**
   >
-  > ![image-20201002163015330](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201002163015330.png)
+  > ![image-20201002163015330]( jvm.assets%5Cimage-20201002163015330.png)
 
 - 使用**直接指针访问**
 
   > 描述： reference中存储的直接就是对象的地址
   >
-  > ![image-20201002163507799](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201002163507799.png)
+  > ![image-20201002163507799]( jvm.assets%5Cimage-20201002163507799.png)
 
 各自的优势：
 
@@ -373,7 +373,7 @@ Java程序需要通过栈（这里应该指的是虚拟机栈）上的reference�
 
        > 如下图： 对象object5、object6、 object7虽然有关联，但它们到GC Roots是不可达的，所以它们将会被判定是可回收的对象
        >
-       > ![image-20201002204501196](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201002204501196.png)
+       > ![image-20201002204501196]( jvm.assets%5Cimage-20201002204501196.png)
 
 
 
@@ -516,7 +516,7 @@ no, i am dead :(
     1. 效率问题：标记和清除两个过程的效率都不高
     2. 空间问题：标记清除后会产生大量不连续的内存碎片，碎片太多可能导致以后再程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发一次垃圾收集动作
 
-    > ![image-20201002231405401](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201002231405401.png)
+    > ![image-20201002231405401]( jvm.assets%5Cimage-20201002231405401.png)
 
 - **复制算法**
 
@@ -532,7 +532,7 @@ no, i am dead :(
 
     将内存缩小为原来的一般，未免太高了。
 
-    > ![image-20201002232332582](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201002232332582.png)
+    > ![image-20201002232332582]( jvm.assets%5Cimage-20201002232332582.png)
 
   - **当前主流的虚拟机算法分配内存的规则是**： 
 
@@ -557,7 +557,7 @@ no, i am dead :(
 
     1. 当标记完可回收对象后，不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存
 
-    > ![image-20201002234614112](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201002234614112.png)
+    > ![image-20201002234614112]( jvm.assets%5Cimage-20201002234614112.png)
 
   
 
@@ -576,7 +576,7 @@ no, i am dead :(
 
 虚拟机包含的垃圾收集器分布（jdk1.7），`重点在CMS和G1收集器`，其他可以做了解
 
-<img src="D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003001442455.png" alt="image-20201003001442455" style="zoom:67%;" />
+<img src=" jvm.assets%5Cimage-20201003001442455.png" alt="image-20201003001442455" style="zoom:67%;" />
 
 > 1. 其中两个收集器之间的连线表示它们可以搭配使用。
 > 2. 虚拟机所处的区域，则表示它属于新生代收集器还是老年代收集器
@@ -594,7 +594,7 @@ no, i am dead :(
     4. 进行垃圾收集时，必须暂停其他所有的工作线程，直到收集结束（缺点）。
     5. 简单而高效（与其他收集器的单线程比）（优点）
 
-    > ![image-20201003002458451](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003002458451.png)
+    > ![image-20201003002458451]( jvm.assets%5Cimage-20201003002458451.png)
 
   - 适用场景：
 
@@ -609,7 +609,7 @@ no, i am dead :(
     3. 使用**-XX:+UserConMarkSweepGC**设置为默认新生代收集器，也可以使用 **-XX:+UseParNewGC**强制指定它
     4. **默认开启的收集线程数与CPU的数量相同**，在CPU非常多的环境下，可以使用**-XX:ParanllelGCThreads**参数来限制垃圾手机线程数
 
-    > ![image-20201003003509986](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003003509986.png)
+    > ![image-20201003003509986]( jvm.assets%5Cimage-20201003003509986.png)
 
   - 适用场景：
 
@@ -654,7 +654,7 @@ no, i am dead :(
     - 作为**CMS收集器的后备方案**，在**并发收集发生Concurrent Mode Failure时使用**
     - 给Client模式下的虚拟机使用
 
-    >![image-20201003123742081](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003123742081.png)
+    >![image-20201003123742081]( jvm.assets%5Cimage-20201003123742081.png)
 
 - **Parallel Old收集器（老年代）**
 
@@ -663,7 +663,7 @@ no, i am dead :(
     1. 使用多线程和“**标记-整理**”算法
     2. **在注重吞吐量以及CPU资源敏感的场合，可以优先考虑Parallel Scavenge 加 Parallel Old 收集器**
 
-    > ![image-20201003124219438](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003124219438.png)
+    > ![image-20201003124219438]( jvm.assets%5Cimage-20201003124219438.png)
 
 - **CMS 收集器（老年代）**
 
@@ -690,7 +690,7 @@ no, i am dead :(
     >
     > 总体上来说： CMS收集器的内存回收过程是与用户线程一起并发执行的
     >
-    > ![image-20201003125651839](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003125651839.png)
+    > ![image-20201003125651839]( jvm.assets%5Cimage-20201003125651839.png)
 
   - 适用场景
 
@@ -733,24 +733,24 @@ no, i am dead :(
   - **过程**：
 
     1. 初始标记
-       
+  
 -  标记一下GC Roots能直接关联到的对象，并修改TAMS(Next Top at Mark Start)的值，让下一阶段用户程序并发并行时，能在正确可用的Region中创建对象，这个阶段要停顿，但耗时很短
        
     2. 并发标记
-   
+      
     - 从GC Root开始对堆中对象进行可达性分析，找出存活对象，这阶段耗时较长，但可与用户程序并发执行
-       
+      
 3. 最终标记
        
 - 修改在并发标记期间因用户程序继续运作而导致标记产生变动的那部分标记记录，虚拟机将这段时间的变化记录在线程Remembered Set Logs里面，最终将Logs数据合并到Remembered Set中。这阶段需要停顿线程，但可并行执行。
        
 4. 筛选回收
-    
+   
    - 首先对各个Region的回收价值和成本进行排序，根据用户所期望的GC停顿时间来指定回收计划
-    
+   
          > 这阶段其实可以和用户程序并发执行，但是因为只回收一部分Region,时间是用户可控制的，而且停顿用户线程将大幅提高手机效率
-    
-       > ![image-20201003141150761](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003141150761.png)
+   
+       > ![image-20201003141150761]( jvm.assets%5Cimage-20201003141150761.png)
 
 
 
@@ -1017,7 +1017,7 @@ Heap(堆)
        5. 如果平均大于，将尝试着进行一次MinorGC ,尽管这次MinorGC 是有风险的
        6. 如果平均小于，或者HandlePromotionFailure设置不允许冒险，那么这时也要改为进行一次Full GC（老年代垃圾回收）
 
-     > ![image-20201003171153611](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003171153611.png)
+     > ![image-20201003171153611]( jvm.assets%5Cimage-20201003171153611.png)
 
 
 
@@ -1047,7 +1047,7 @@ Heap(堆)
 
 ​	使用方式和ps命令类似：可以列出正在运行的虚拟机进程，并显示虚拟机**执行主类**、**名称**以及这些进程的本地虚拟机唯一ID（就是**进程ID**）
 
-![image-20201003173240271](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003173240271.png)
+![image-20201003173240271]( jvm.assets%5Cimage-20201003173240271.png)
 
 
 
@@ -1060,13 +1060,13 @@ Heap(堆)
 
 - 具体
 
-  ![image-20201003173911973](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003173911973.png)
+  ![image-20201003173911973]( jvm.assets%5Cimage-20201003173911973.png)
 
-  ​	![image-20201003174055126](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003174055126.png)
+  ​	![image-20201003174055126]( jvm.assets%5Cimage-20201003174055126.png)
 
 - 示例：
 
-  ![image-20201003174530223](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003174530223.png)
+  ![image-20201003174530223]( jvm.assets%5Cimage-20201003174530223.png)
 
 
 
@@ -1074,11 +1074,11 @@ Heap(堆)
 
 - 说明
 
-  ![image-20201003174919026](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003174919026.png)
+  ![image-20201003174919026]( jvm.assets%5Cimage-20201003174919026.png)
 
 - 示例
 
-  <img src="D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003175014620.png" alt="image-20201003175014620" style="zoom:80%;" />
+  <img src=" jvm.assets%5Cimage-20201003175014620.png" alt="image-20201003175014620" style="zoom:80%;" />
 
 
 
@@ -1086,13 +1086,13 @@ Heap(堆)
 
 - ​	描述：
 
-  ![image-20201003175432598](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003175432598.png)
+  ![image-20201003175432598]( jvm.assets%5Cimage-20201003175432598.png)
 
-  ![image-20201003175457554](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003175457554.png)
+  ![image-20201003175457554]( jvm.assets%5Cimage-20201003175457554.png)
 
 - 示例：
 
-  ![image-20201003175601050](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003175601050.png)
+  ![image-20201003175601050]( jvm.assets%5Cimage-20201003175601050.png)
 
 
 
@@ -1106,13 +1106,13 @@ Heap(堆)
 
 - 描述：
 
-  ![image-20201003180148445](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003180148445.png)
+  ![image-20201003180148445]( jvm.assets%5Cimage-20201003180148445.png)
 
-  ![image-20201003180223664](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003180223664.png)
+  ![image-20201003180223664]( jvm.assets%5Cimage-20201003180223664.png)
 
 - 示例：
 
-  ![image-20201003180315823](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201003180315823.png)
+  ![image-20201003180315823]( jvm.assets%5Cimage-20201003180315823.png)
 
 
 
@@ -1142,7 +1142,7 @@ idea 安装相应插件： https://blog.csdn.net/qq_37960603/article/details/852
 
 **加载-验证-准备-解析-初始化-使用-卸载**
 
-![image-20200914100545154](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914100545154.png)
+![image-20200914100545154]( jvm.assets%5Cimage-20200914100545154.png)
 
 其中解析阶段可以在初始化之后再开始，这是为了支持java语言的运行时绑定（动态绑定）
 
@@ -1248,7 +1248,7 @@ public class NotInitialization{
 
 上述代码没有任何输出。但这段代码却触发了SuperClass的类的初始化阶段(使用-XX:+TraceClassLoader 参数开启加载过程)，它是由虚拟机自动生成的，直接继承与java.lang.Object的子类，创建动作有字节码指令newarray触发。
 
-![image-20200914110947736](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914110947736.png)
+![image-20200914110947736]( jvm.assets%5Cimage-20200914110947736.png)
 
 
 
@@ -1343,25 +1343,25 @@ hello world
 
 #### 1. 文件格式验证
 
-![image-20200914115915002](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914115915002.png)
+![image-20200914115915002]( jvm.assets%5Cimage-20200914115915002.png)
 
 #### 2. 元数据验证
 
-![image-20200914115834577](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914115834577.png)
+![image-20200914115834577]( jvm.assets%5Cimage-20200914115834577.png)
 
 #### 3.字节码验证
 
-![image-20200914120140297](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914120140297.png)
+![image-20200914120140297]( jvm.assets%5Cimage-20200914120140297.png)
 
-![image-20200914120235047](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914120235047.png)
+![image-20200914120235047]( jvm.assets%5Cimage-20200914120235047.png)
 
 ​	
 
 #### 4.符号引用验证
 
-![image-20200914120524405](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914120524405.png)
+![image-20200914120524405]( jvm.assets%5Cimage-20200914120524405.png)
 
-![image-20200914120700076](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914120700076.png)
+![image-20200914120700076]( jvm.assets%5Cimage-20200914120700076.png)
 
 
 
@@ -1381,11 +1381,11 @@ hello world
 >
 >  那么变量value在准备阶段过后的初始值为0，而不是123，因为还没有执行任何java方法，而把value赋值为123的putstatic指令时程序被编译后，存放在类构造器<clinit>方法中，所以把value赋值为123的动作将在初始化阶段才会执行
 >
->![image-20200914122013289](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914122013289.png)
+>![image-20200914122013289]( jvm.assets%5Cimage-20200914122013289.png)
 >
 >特殊情况：
 >
->![image-20200914122213719](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914122213719.png)
+>![image-20200914122213719]( jvm.assets%5Cimage-20200914122213719.png)
 
 
 
@@ -1397,7 +1397,7 @@ hello world
 
 ##### 直接引用和符号引用的关联：
 
-![image-20200914122534255](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914122534255.png)
+![image-20200914122534255]( jvm.assets%5Cimage-20200914122534255.png)
 
 
 
@@ -1409,13 +1409,13 @@ hello world
 
 ##### invokedynamic指令的特殊说明：
 
-![image-20200914123817814](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914123817814.png)
+![image-20200914123817814]( jvm.assets%5Cimage-20200914123817814.png)
 
 
 
 ##### 符号引用与常量池的对应：
 
-![image-20200914124008562](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914124008562.png)
+![image-20200914124008562]( jvm.assets%5Cimage-20200914124008562.png)
 
 
 
@@ -1423,13 +1423,13 @@ hello world
 
 假设当前代码所处的类为D，如果要把一个从未解析过的符号引用N解析程为一个类或接口C的直接引用。那么虚拟机解析过程需要以下3个步骤：
 
-![image-20200914124619161](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914124619161.png)
+![image-20200914124619161]( jvm.assets%5Cimage-20200914124619161.png)
 
 ###### 2.字段解析
 
-![image-20200914124749218](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914124749218.png)
+![image-20200914124749218]( jvm.assets%5Cimage-20200914124749218.png)
 
-![image-20200914124834731](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914124834731.png)
+![image-20200914124834731]( jvm.assets%5Cimage-20200914124834731.png)
 
 
 
@@ -1439,27 +1439,27 @@ hello world
 
 先解析类方法表的class_index项中索引方法所属的类或接口的符号引用，解析成功则：
 
-![image-20200914125329140](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914125329140.png)
+![image-20200914125329140]( jvm.assets%5Cimage-20200914125329140.png)
 
 
 
 ###### 5.接口方法解析
 
-![image-20200914130113588](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914130113588.png)
+![image-20200914130113588]( jvm.assets%5Cimage-20200914130113588.png)
 
-![image-20200914130143947](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914130143947.png)
+![image-20200914130143947]( jvm.assets%5Cimage-20200914130143947.png)
 
 
 
 ### 初始化
 
-![image-20200914133754905](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914133754905.png)
+![image-20200914133754905]( jvm.assets%5Cimage-20200914133754905.png)
 
-![image-20200914133912844](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914133912844.png)
+![image-20200914133912844]( jvm.assets%5Cimage-20200914133912844.png)
 
 
 
-![image-20200914134352824](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914134352824.png)
+![image-20200914134352824]( jvm.assets%5Cimage-20200914134352824.png)
 
 
 
@@ -1499,7 +1499,7 @@ Thread[Thread-1,5,main]init DeadLoopClass
 */
 ```
 
-![image-20200914134730197](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914134730197.png)
+![image-20200914134730197]( jvm.assets%5Cimage-20200914134730197.png)
 
 
 
@@ -1553,7 +1553,7 @@ true
 */
 ```
 
-![image-20200914162835267](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914162835267.png)
+![image-20200914162835267]( jvm.assets%5Cimage-20200914162835267.png)
 
 
 
@@ -1580,19 +1580,19 @@ true
 
 双亲委派模型：
 
-![image-20200914164605575](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914164605575.png)
+![image-20200914164605575]( jvm.assets%5Cimage-20200914164605575.png)
 
 工作过程：
 
-![image-20200914164813924](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914164813924.png)
+![image-20200914164813924]( jvm.assets%5Cimage-20200914164813924.png)
 
 好处：
 
-![image-20200914164914593](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914164914593.png)
+![image-20200914164914593]( jvm.assets%5Cimage-20200914164914593.png)
 
 代码过程：
 
-![image-20200914165924120](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914165924120.png)
+![image-20200914165924120]( jvm.assets%5Cimage-20200914165924120.png)
 
 ```java
  protected Class<?> loadClass(String name, boolean resolve)
@@ -1638,7 +1638,7 @@ true
 
 ### 破坏双亲委托
 
-![image-20200914170605710](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20200914170605710.png)
+![image-20200914170605710]( jvm.assets%5Cimage-20200914170605710.png)
 
 
 
@@ -1703,7 +1703,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
 
  1. 使用内存映像工具确认内存中的对象是否是必要的，也就是先分清楚到底是出现了内存泄露(Memory Leak)还是内存溢出(Memory Overflow)
 
-    > ![image-20201002172843983](D:%5CLearningSpace%5Cjava%5Cjvm-learning%5Cjvm.assets%5Cimage-20201002172843983.png)
+    > ![image-20201002172843983]( jvm.assets%5Cimage-20201002172843983.png)
     >
     > ​											使用JProfilerl打开的堆转储快照文件
 
